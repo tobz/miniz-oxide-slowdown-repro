@@ -17,9 +17,13 @@ This repository is a reproduction of a slowdown in `miniz-oxide` when compiled a
 
 ```shell
 # This requires that you use rustup so automatically download/utilize the correct version(s) of Rust.
-cargo +1.80.0 run --release # Both 1.80 and 1.81 should report relatively close times
-cargo +1.81.0 run --release # for compressing the corpus.
-cargo +1.82.0 run --release # 1.82 should be significantly slower.
+#
+# Both 1.80 and 1.81 should report relatively close times for compressing the corpus:
+cargo +1.80.0 run --release
+cargo +1.81.0 run --release
+
+# And then 1.82 should be significantly slower:
+cargo +1.82.0 run --release
 ```
 
 ## results
