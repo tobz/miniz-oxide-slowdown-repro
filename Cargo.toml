@@ -1,0 +1,13 @@
+[package]
+name = "miniz-oxide-slowdown-repro"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+flate2 = { version = "1.0.33", features = ["rust_backend"] }
+rand = { version = "0.8.5", features = ["min_const_gen"] }
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+opt-level = 3
