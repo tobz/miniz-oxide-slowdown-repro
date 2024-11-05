@@ -4,10 +4,11 @@ This repository is a reproduction of a slowdown in `miniz-oxide` when compiled a
 
 ## assumptions / design
 
-- We use a seeded RNG to generate our corpus (32MB of random data) used for compression.
+- We use a seeded RNG (with a fixed seed) to generate our corpus (32MB of random data) used for compression,
+  and to do so consistently across runs.
 - We pre-allocate our output buffer to the maximum possible size (32MB) to avoid reallocations at least for the
   compressed data.
-- We use `flate2` with the `rust_backend`) which utilizes `miniz-oxide`.
+- We use `flate2` with the `rust_backend` feature enabled, which enables utilizing `miniz-oxide`.
 - We use Zlib with the default compression level (6).
 - We do 32 rounds of compressing the input corpus to ensure we have a good sample size.
 - We set our release profile (in `Cargo.toml`) to use all the goodies -- fat LTO, `codegen-units = 1`, etc -- to ensure
